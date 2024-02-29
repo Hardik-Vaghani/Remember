@@ -1,35 +1,48 @@
 package com.hardik.remember.ui
 
+import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.Application
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.hardik.remember.R
 import com.hardik.remember.databinding.ActivityMainBinding
 import com.hardik.remember.databinding.ItemAlertDialogSpellingBinding
@@ -37,29 +50,11 @@ import com.hardik.remember.db.DBInstance
 import com.hardik.remember.models.SpellingResponseItem
 import com.hardik.remember.repository.BlogRepositoryInstance
 import com.hardik.remember.repository.SpellingRepositoryInstance
-import com.hardik.remember.ui.blog.BlogFragment
-import com.hardik.remember.ui.blog.BlogReadScrollingFragment
 import com.hardik.remember.ui.blog.BlogViewModel
 import com.hardik.remember.ui.blog.BlogViewModelProviderFactory
 import com.hardik.remember.ui.word.WordViewModel
 import com.hardik.remember.ui.word.WordViewModelProviderFactory
-import com.hardik.remember.util.Constants
-import com.hardik.remember.util.Constants.Companion.PARAM_BLOG_ID
 
-import android.Manifest
-import android.content.pm.PackageManager
-import android.os.Build
-import android.os.Environment
-import android.util.Log
-import android.view.MenuItem
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.room.Room
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
-import java.io.IOException
-import java.nio.channels.FileChannel
 
 class MainActivity : AppCompatActivity() {
 
@@ -75,7 +70,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var wordViewModel: WordViewModel
     lateinit var blogViewModel: BlogViewModel
 
-    private val WRITE_EXTERNAL_STORAGE_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -177,12 +171,13 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.action_settings -> {
                 // User selected "Export Database" menu item
-                if (checkStoragePermission()) {
+                if (checkStoragePermissions()) {
                     // Permission already granted, call export function
-                    exportDatabase("database.db")
+//                    exportDatabase("database.db")
+                    Toast.makeText(this, "Permission already granted", Toast.LENGTH_SHORT).show()
                 } else {
                     // Permission not granted, request it
-                    requestStoragePermission()
+                    requestForStoragePermissions()
                 }
                 return true
             }
@@ -369,20 +364,65 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Request storage permission
-    private fun requestStoragePermission() {
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), WRITE_EXTERNAL_STORAGE_REQUEST)
+    // Check permission status
+    private fun checkStoragePermissions(): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            //Android is 11 (R) or above
+            Environment.isExternalStorageManager()
         } else {
-            // Permission already granted, call export function
-            exportDatabase("database.db")
+            //Below android 11
+            val write = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            val read = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+            read == PackageManager.PERMISSION_GRANTED && write == PackageManager.PERMISSION_GRANTED
+        }
+    }
+    // Request storage permission
+    private val STORAGE_PERMISSION_CODE = 23
+
+    private fun requestForStoragePermissions() {
+        //Android is 11 (R) or above
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            try {
+                val intent = Intent()
+                intent.action = Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION
+                val uri = Uri.fromParts("package", this.packageName, null)
+                intent.data = uri
+                storageActivityResultLauncher.launch(intent)
+            } catch (e: Exception) {
+                val intent = Intent()
+                intent.action = Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION
+                storageActivityResultLauncher.launch(intent)
+            }
+        } else {
+            //Below android 11
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_PERMISSION_CODE)
         }
     }
 
-    // Check permission status
-    private fun checkStoragePermission(): Boolean {
-        return (ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
-    }
+    private val storageActivityResultLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val resultCode = result.resultCode
+            val data = result.data
+
+            if (resultCode == Activity.RESULT_OK) {
+                // The user accepted the request to manage external storage permissions
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    if (Environment.isExternalStorageManager()) {
+                        // Manage External Storage Permissions Granted
+                        Log.d("TAG", "Manage External Storage Permissions Granted")
+                    } else {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Storage Permissions Denied",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            } else {
+                // The user did not accept the request
+                Toast.makeText(this@MainActivity, "Storage Permissions Denied", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     // Handle permission request result
     override fun onRequestPermissionsResult(
@@ -391,57 +431,23 @@ class MainActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
         when (requestCode) {
-            WRITE_EXTERNAL_STORAGE_REQUEST -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // Permission granted, call export function
-                    exportDatabase("database.db")
-                } else {
-                    // Permission denied, handle accordingly
-                    Toast.makeText(this,"Permission denied",Toast.LENGTH_LONG).show()
+            STORAGE_PERMISSION_CODE ->{
+                // If request is cancelled, the result arrays are empty.
+                if(grantResults.isNotEmpty()){
+                    val writeGranted = grantResults.getOrNull(0) == PackageManager.PERMISSION_GRANTED
+                    val readGranted = grantResults.getOrNull(1) == PackageManager.PERMISSION_GRANTED
+                    if (readGranted && writeGranted) {
+                        // Permission granted, call export function
+//                    exportDatabase("database.db")
+                        Toast.makeText(this@MainActivity, "Storage Permissions Granted", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@MainActivity, "Storage Permissions Denied", Toast.LENGTH_SHORT).show()
+                        // permission denied, boo! Disable the
+                        // functionality that depends on this permission.
+                    }
                 }
             }
-        }
-    }
-
-    // Function to export Room database
-    private fun exportDatabase(dbName: String) {
-        val appDatabase = Room.databaseBuilder(this, DBInstance::class.java, dbName).build()
-
-        try {
-//            val exportDir = File(ContextCompat.getExternalFilesDirs(this, android.os.Environment.DIRECTORY_DOCUMENTS)[0], "DatabaseBackups")
-            val exportDir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "DatabaseBackups")
-
-            if (!exportDir.exists()) {
-                exportDir.mkdirs()
-            }
-//            val externalStorageState = Environment.getExternalStorageState()
-//            Log.d("ExportDatabase", "External Storage State: $externalStorageState")
-
-            val exportFile = File(exportDir, dbName)
-
-            exportFile.createNewFile()
-
-
-            val source = FileInputStream(getDatabasePath(dbName)).channel
-            val destination = FileOutputStream(exportFile).channel
-
-            destination.transferFrom(source, 0, source.size())
-
-            source.close()
-            destination.close()
-
-            Log.d("ExportDatabase", "Export Directory: ${exportDir.absolutePath}")
-            Log.d("ExportDatabase", "Existing Database Path: ${getDatabasePath(dbName).absolutePath}")
-
-            Toast.makeText(this,"export ${exportFile}",Toast.LENGTH_LONG).show()
-            // Notify the user that the export is successful
-            // You can show a Toast or display a notification
-        } catch (e: IOException) {
-            e.printStackTrace()
-            Log.e("ExportDatabase", "Error exporting database: ${e.message}")
-            // Handle the exception
         }
     }
 }
