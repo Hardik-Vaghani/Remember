@@ -1,0 +1,15 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="135"
+        android:endColor="@color/app_bar_color"
+        android:centerColor="@color/action_bar_color"
+        android:startColor="@color/selected_item_background_color"
+        android:type="linear" />
+</shape>
+<!--<gradient-->
+<!--android:angle="135"-->
+<!--android:centerColor="#009688"-->
+<!--android:endColor="#00695C"-->
+<!--android:startColor="#4DB6AC"-->
+<!--android:type="linear" />-->

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_word">
+
+    <fragment
+        android:id="@+id/nav_word"
+        android:name="com.hardik.remember.ui.word.WordFragment"
+        android:label="@string/menu_word"
+        tools:layout="@layout/fragment_word" />
+
+    <fragment
+        android:id="@+id/nav_blog"
+        android:name="com.hardik.remember.ui.blog.BlogFragment"
+        android:label="@string/menu_blog"
+        tools:layout="@layout/fragment_blog" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.hardik.remember.ui.syntax.SyntaxFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_syntax" />
+
+    <fragment
+        android:id="@+id/blogInsertFragment"
+        android:name="com.hardik.remember.ui.blog.BlogInsertFragment"
+        android:label="Content"
+        tools:layout="@layout/fragment_blog_insert" />
+
+    <fragment
+        android:id="@+id/blogReadScrollingFragment"
+        android:name="com.hardik.remember.ui.blog.BlogReadScrollingFragment"
+        android:label="Blog read"
+        tools:layout="@layout/fragment_blog_read_scrolling" />
+
+    <fragment
+        android:id="@+id/blogUpdateFragment"
+        android:name="com.hardik.remember.ui.blog.BlogUpdateFragment"
+        android:label="Blog update"
+        tools:layout="@layout/fragment_blog_insert"/>
+</navigation>
+

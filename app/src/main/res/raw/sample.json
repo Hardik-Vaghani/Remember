@@ -1,0 +1,32 @@
+{
+  "id": 13,
+  "sentence_type": "",
+  "example": "",
+  "data": [
+    {
+      "id": 0,
+      "type": "Positive",
+      "syntax": "",
+      "example": "",
+      "meaning": ""
+    }, {
+      "id": 0,
+      "type": "Negative",
+      "syntax": "",
+      "example": "",
+      "meaning": ""
+    }, {
+      "id": 0,
+      "type": "Interrogative",
+      "syntax": "",
+      "example": "",
+      "meaning": ""
+    }, {
+      "id": 0,
+      "type": "Imperative",
+      "syntax": "",
+      "example": "",
+      "meaning": ""
+    }
+  ]
+}

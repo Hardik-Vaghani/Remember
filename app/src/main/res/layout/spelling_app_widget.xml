@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/spelling_app_widget"
+    style="@style/Widget.Remember.AppWidget.Container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.Remember.AppWidgetContainer"
+    tools:ignore="HardcodedText">
+<!--    android:background="@drawable/widget_preview"-->
+
+    <ListView
+        android:id="@+id/appWidget_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:headerDividersEnabled="false"
+        android:scrollbars="none"
+        tools:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/appwidget_empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/widget_preview"
+        android:gravity="center"
+        android:text="Empty"
+        android:textColor="@color/selected_text_color"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+<!--        android:visibility="gone" />-->
+</RelativeLayout>

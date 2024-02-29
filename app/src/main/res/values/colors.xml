@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="action_bar_night_color">#1D1D1D</color>
+    <color name="action_bar_color">#364F53</color>
+    <color name="app_bar_color">#2F3D46</color>
+    <color name="action_button_color">@android:color/holo_green_dark</color>
+    <color name="action_button_color_second">#C9D1C4</color>
+
+    <color name="black">@android:color/black</color>
+    <color name="white">@android:color/white</color>
+
+    <color name="shimmerColor">#CCCC</color>
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+
+    //nav icon and text color
+    <color name="selected_icon_color">@color/action_button_color_second</color>
+    <color name="selected_text_color">@color/action_button_color_second</color>
+    <color name="unselected_icon_color">@color/black</color>
+    <color name="unselected_text_color">@color/black</color>
+    <color name="selected_item_background_color">#29517970</color>
+
+    <color name="layout_background">#517970</color>
+    <color name="search_icon_color">@color/action_bar_color</color>
+
+    <color name="like_in_dark">@color/black</color>
+    <color name="unlike_in_dark">@color/app_bar_color</color>
+    <color name="like_in_light">@color/app_bar_color</color>
+    <color name="unlike_in_light">#C9D1C4</color>
+
+    <color name="text_color_Primary">@color/action_bar_night_color</color>
+    <color name="text_color_Secondary">@color/unlike_in_dark</color>
+    <color name="text_color_PrimaryVariant">#fff</color>
+    <color name="text_color_SecondaryVariant">#fff</color>
+</resources><!---
+<color name="action_bar_night_color">#1D1D1D</color>
+<color name="action_bar_color">#1D1D1D</color>
+<color name="app_bar_color">#040202</color>
+<color name="action_button_color">#B31301</color>
+<color name="action_button_color_second">#850C01</color>
+
+<color name="black">@color/action_bar_color</color>
+<color name="white">#AEB0B2</color>
+-->

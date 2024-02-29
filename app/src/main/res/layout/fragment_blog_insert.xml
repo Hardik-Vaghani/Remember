@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/_10sdp"
+    tools:context=".ui.blog.BlogInsertFragment"
+    tools:ignore="HardcodedText">
+
+
+    <ScrollView
+        android:id="@+id/scroll_item"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tInLay_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_4sdp"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="outline"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded">
+
+                <!--                            style="@style/TextAppearance.MaterialComponents.Headline6"-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tInEdt_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Title"
+                    android:imeOptions="actionNext"
+                    android:includeFontPadding="true"
+                    android:inputType="textCapSentences"
+                    android:textColor="@color/action_bar_color"
+                    android:textColorHint="@color/app_bar_color"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tInLay_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_4sdp"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="outline"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tInEdt_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:hint="Content"
+                    android:imeOptions="normal"
+                    android:includeFontPadding="true"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:minHeight="@dimen/_200sdp"
+                    android:minLines="1"
+                    android:selectAllOnFocus="true"
+                    android:textColor="@color/action_bar_color"
+                    android:textColorHint="@color/app_bar_color"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tInLay_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_4sdp"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="outline"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tInEdt_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Type optional"
+                    android:imeOptions="normal"
+                    android:includeFontPadding="true"
+                    android:inputType="textCapSentences"
+                    android:textColor="@color/action_bar_color"
+                    android:textColorHint="@color/app_bar_color"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/_16ssp"
+                    android:textStyle="normal" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:background="@color/shimmerColor" />
+
+        <LinearLayout
+            android:id="@+id/ll_second"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone|normal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ProgressBar
+                    android:id="@+id/paginationProgressBar"
+                    style="?attr/progressBarStyle"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:background="@android:color/transparent"
+                    android:indeterminateTint="@color/action_bar_color"
+                    android:visibility="invisible" />
+                <!--                        android:indeterminateTint="@color/shimmerColor"-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_weight="8"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/mb_submit"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/action_bar_color"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Submit"
+                    android:textColor="@color/selected_text_color"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="italic|bold"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Rounded" />
+                <!--        app:layout_constraintTop_toBottomOf="@id/cv_first"-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/siv_like_dislike"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:contentDescription="@string/image_button_description"
+                    android:focusable="true"
+                    android:padding="@dimen/_2sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/icon_thumbs_up"
+                    app:tint="@color/unlike_in_light" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

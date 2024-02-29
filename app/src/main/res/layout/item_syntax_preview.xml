@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/_2sdp"
+    tools:ignore="HardcodedText">
+    <!--    android:background="@drawable/edittext_background"-->
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_1sdp"
+        android:layout_marginVertical="@dimen/_1sdp"
+        android:background="@drawable/text_under_line_background"
+        android:letterSpacing="0.05"
+        android:text="type"
+        android:textColor="@color/text_color_Secondary"
+        android:textSize="@dimen/_10ssp"
+        app:fontFamily="@font/patua_one"
+        app:layout_constraintBottom_toTopOf="@id/mtv_syntax"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/mtv_syntax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_1sdp"
+        android:layout_marginVertical="@dimen/_1sdp"
+        android:letterSpacing="0.05"
+        android:padding="@dimen/_8sdp"
+        android:text="Hello, MaterialTextView!"
+        android:textColor="@color/text_color_Primary"
+        android:textSize="@dimen/_16ssp"
+        android:textStyle="bold"
+        app:fontFamily="@font/adamina"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mtv_type" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

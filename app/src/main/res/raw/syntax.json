@@ -1,0 +1,386 @@
+[
+  {
+    "id": 1,
+    "sentence_type": "Present Simple tense",
+    "example": "She reads a book.",
+    "data": [
+      {
+        "id": 1,
+        "type": "Positive",
+        "syntax": "Subject + Base Verb (s/es for third person singular)",
+        "example": "She eats lunch at 12 PM.",
+        "meaning": ""
+      }, {
+        "id": 2,
+        "type": "Negative",
+        "syntax": "Subject + Do/Does + Not + Base Verb",
+        "example": "He does not like spicy food.",
+        "meaning": ""
+      }, {
+        "id": 3,
+        "type": "Interrogative",
+        "syntax": "(Wh-word) + Do/Does + Subject + Base Verb?",
+        "example": "Do you enjoy playing sports?",
+        "meaning": ""
+      }, {
+        "id": 4,
+        "type": "Imperative",
+        "syntax": "(You) + Base Verb + (Object)",
+        "example": "Eat your vegetables.",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "sentence_type": "Present Continuous",
+    "example": "They are playing football.",
+    "data": [
+      {
+        "id": 1,
+        "type": "Positive",
+        "syntax": "Subject + Am/Is/Are + Verb-ing",
+        "example": "They are playing football.",
+        "meaning": ""
+      }, {
+        "id": 2,
+        "type": "Negative",
+        "syntax": "Subject + Am/Is/Are + Not + Verb-ing",
+        "example": "She is not studying right now.",
+        "meaning": ""
+      }, {
+        "id": 3,
+        "type": "Interrogative",
+        "syntax": "(Wh-word) + Am/Is/Are + Subject + Verb-ing?",
+        "example": "Are you watching TV?",
+        "meaning": ""
+      }, {
+        "id": 4,
+        "type": "Imperative",
+        "syntax": "(You) + Be (Am/Is/Are) + Verb-ing + (Object)",
+        "example": "Be quiet while I am working.",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "sentence_type": "Present Perfect Tense",
+    "example": "I have visited that museum before.",
+    "data": [
+      {
+        "id": 1,
+        "type": "Positive",
+        "syntax": "Subject + Have/Has + Past Participle",
+        "example": "I have visited Paris.",
+        "meaning": ""
+      }, {
+        "id": 2,
+        "type": "Negative",
+        "syntax": "Subject + Have/Has + Not + Past Participle",
+        "example": "She has not finished her assignment.",
+        "meaning": ""
+      }, {
+        "id": 3,
+        "type": "Interrogative",
+        "syntax": "(Wh-word) + Have/Has + Subject + Past Participle + ?",
+        "example": "Have you seen this movie?",
+        "meaning": ""
+      }, {
+        "id": 4,
+        "type": "Imperative",
+        "syntax": "(You) + Have + Past Participle + (Object)",
+        "example": "Have a good day.",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "sentence_type": "Present Perfect Continuous Tense",
+    "example": "She has been studying for hours.",
+    "data": [
+      {
+        "id": 1,
+        "type": "Positive",
+        "syntax": "Subject + Have/Has + Been + Verb-ing",
+        "example": "They have been studying for the exam.",
+        "meaning": ""
+      }, {
+        "id": 2,
+        "type": "Negative",
+        "syntax": "Subject + Have/Has + Not + Been + Verb-ing",
+        "example": "She has not been working here for long.",
+        "meaning": ""
+      }, {
+        "id": 3,
+        "type": "Interrogative",
+        "syntax": "(Wh-word) + Have/Has + Subject + Been + Verb-ing + ?",
+        "example": "Have you been waiting for a long time?",
+        "meaning": ""
+      }, {
+        "id": 4,
+        "type": "Imperative",
+        "syntax": "(You) + Have + Been + Verb-ing + (Object)",
+        "example": "Have a break; you have been working hard.",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "sentence_type": "Past Simple",
+    "example": "He finished his homework.",
+    "data": [
+      {
+        "id": 1,
+        "type": "Positive",
+        "syntax": "Subject + Past Verb",
+        "example": "She visited London last summer.",
+        "meaning": ""
+      }, {
+        "id": 2,
+        "type": "Negative",
+        "syntax": "Subject + Did + Not + Base Verb",
+        "example": "He did not finish his homework.",
+        "meaning": ""
+      }, {
+        "id": 3,
+        "type": "Interrogative",
+        "syntax": "(Wh-word) + Did + Subject + Base Verb + ?",
+        "example": "(Wh-word) + Did you enjoy the movie?",
+        "meaning": ""
+      }, {
+        "id": 4,
+        "type": "Imperative",
+        "syntax": "(You) + Base Verb + (Object)",
+        "example": "Close the door.",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "sentence_type": "Past Continuous",
+    "example": "We were watching a movie.",
+    "data": [
+      {
+        "id": 1,
+        "type": "Positive",
+        "syntax": "Subject + Was/Were + Verb-ing",
+        "example": "They were playing basketball when it started raining.",
+        "meaning": ""
+      }, {
+        "id": 2,
+        "type": "Negative",
+        "syntax": "Subject + Was/Were + Not + Verb-ing",
+        "example": "She was not studying when I called her.",
+        "meaning": ""
+      }, {
+        "id": 3,
+        "type": "Interrogative",
+        "syntax": "(Wh-word) + Was/Were + Subject + Verb-ing + ?",
+        "example": "Were you watching TV when the power went out?",
+        "meaning": ""
+      }, {
+        "id": 4,
+        "type": "Imperative",
+        "syntax": "(You) + Be (Was/Were) + Verb-ing + (Object)",
+        "example": "Be quiet while I was working on my project.",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "sentence_type": "Past Perfect",
+    "example": "By the time i arrived, they had already left.",
+    "data": [
+      {
+        "id": 1,
+        "type": "Positive",
+        "syntax": "Subject + Had + Past Participle",
+        "example": "She had finished her work before the meeting started.",
+        "meaning": ""
+      }, {
+        "id": 2,
+        "type": "Negative",
+        "syntax": "Subject + Had + Not + Past Participle",
+        "example": "They had not seen each other for years.",
+        "meaning": ""
+      }, {
+        "id": 3,
+        "type": "Interrogative",
+        "syntax": "(Wh-word) + Had + Subject + Past Participle + ?",
+        "example": "Had you ever been to Paris before last summer?",
+        "meaning": ""
+      }, {
+        "id": 4,
+        "type": "Imperative",
+        "syntax": "(You) + Had + Past Participle + (Object)",
+        "example": "Had a good rest.",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "sentence_type": "Past Perfect Continuous",
+    "example": "They had been waiting for a long time.",
+    "data": [
+      {
+        "id": 1,
+        "type": "Positive",
+        "syntax": "Subject + Had + Been + Verb-ing",
+        "example": "They had been waiting for the bus for over an hour.",
+        "meaning": ""
+      }, {
+        "id": 2,
+        "type": "Negative",
+        "syntax": "Subject + Had + Not + Been + Verb-ing",
+        "example": "She had not been working on the project for very long.",
+        "meaning": ""
+      }, {
+        "id": 3,
+        "type": "Interrogative",
+        "syntax": "Had + Subject + Been + Verb-ing + ?",
+        "example": "Had you been practicing the piano before the concert?",
+        "meaning": ""
+      }, {
+        "id": 4,
+        "type": "Imperative",
+        "syntax": "(You) + Had + Been + Verb-ing + (Object)",
+        "example": "Had a break; you had been studying for hours.",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "sentence_type": "Future Simple",
+    "example": "I will call you later.",
+    "data": [
+      {
+        "id": 1,
+        "type": "Positive",
+        "syntax": "Subject + Will/Shall + Base Verb",
+        "example": "She will finish her project by tomorrow.",
+        "meaning": ""
+      }, {
+        "id": 2,
+        "type": "Negative",
+        "syntax": "Subject + Will/Shall + Not + Base Verb",
+        "example": "They will not attend the meeting.",
+        "meaning": ""
+      }, {
+        "id": 3,
+        "type": "Interrogative",
+        "syntax": "(Wh-word) + Will/Shall + Subject + Base Verb + ?",
+        "example": "Will you join us for dinner?",
+        "meaning": ""
+      }, {
+        "id": 4,
+        "type": "Imperative",
+        "syntax": "(You) + Will + Base Verb + (Object)",
+        "example": "Will you please pass the salt?",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "sentence_type": "Future Continuous",
+    "example": "At this time  tomorrow, we will be flying to Paris.",
+    "data": [
+      {
+        "id": 1,
+        "type": "Positive",
+        "syntax": "Subject + Will/Shall + Be + Verb-ing",
+        "example": "They will be celebrating New Year's Eve at the party.",
+        "meaning": ""
+      }, {
+        "id": 2,
+        "type": "Negative",
+        "syntax": "Subject + Will/Shall + Not + Be + Verb-ing",
+        "example": "She will not be attending the conference next week.",
+        "meaning": ""
+      }, {
+        "id": 3,
+        "type": "Interrogative",
+        "syntax": "(Wh-word) + Will/Shall + Subject + Be + Verb-ing + ?",
+        "example": "Will you be working late tonight?",
+        "meaning": ""
+      }, {
+        "id": 4,
+        "type": "Imperative",
+        "syntax": "(You) + Will + Be + Verb-ing + (Object)",
+        "example": "Will you be bringing dessert to the potluck?",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "sentence_type": "Future Perfect",
+    "example": "By next year, he will have completed his degree.",
+    "data": [
+      {
+        "id": 1,
+        "type": "Positive",
+        "syntax": "Subject + Will/Shall + Have + Past Participle",
+        "example": "By next month, she will have completed the project.",
+        "meaning": ""
+      }, {
+        "id": 2,
+        "type": "Negative",
+        "syntax": "Subject + Will/Shall + Not + Have + Past Participle",
+        "example": "They will not have finished the construction by the deadline.",
+        "meaning": ""
+      }, {
+        "id": 3,
+        "type": "Interrogative",
+        "syntax": "(Wh-word) + Will/Shall + Subject + Have + Past Participle + ?",
+        "example": "Will you have submitted your report by tomorrow?",
+        "meaning": ""
+      }, {
+        "id": 4,
+        "type": "Imperative",
+        "syntax": "(You) + Will + Have + Past Participle + (Object)",
+        "example": "Will you have packed your bags by the time I arrive?",
+        "meaning": ""
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "sentence_type": "Future Perfect Continuous",
+    "example": "By the time you arrive, I will have been working for hours.",
+    "data": [
+      {
+        "id": 1,
+        "type": "Positive",
+        "syntax": "Subject + Will/Shall + Have + Been + Verb-ing",
+        "example": "By the time you arrive, they will have been waiting for two hours.",
+        "meaning": ""
+      }, {
+        "id": 2,
+        "type": "Negative",
+        "syntax": "Subject + Will/Shall + Not + Have + Been + Verb-ing",
+        "example": "She will not have been studying all night.",
+        "meaning": ""
+      }, {
+        "id": 3,
+        "type": "Interrogative",
+        "syntax": "(Wh-word) + Will/Shall + Subject + Have + Been + Verb-ing + ?",
+        "example": "Will you have been working on this project for a month by the ",
+        "meaning": ""
+      }, {
+        "id": 4,
+        "type": "Imperative",
+        "syntax": "(You) + Will + Have + Been + Verb-ing + (Object)",
+        "example": "Will you have been practicing the piano for an hour?",
+        "meaning": ""
+      }
+    ]
+  }
+]
