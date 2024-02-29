@@ -75,6 +75,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var wordViewModel: WordViewModel
     lateinit var blogViewModel: BlogViewModel
 
+    private val WRITE_EXTERNAL_STORAGE_REQUEST = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -174,6 +176,14 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_settings -> {
+                // User selected "Export Database" menu item
+                if (checkStoragePermission()) {
+                    // Permission already granted, call export function
+                    exportDatabase("database.db")
+                } else {
+                    // Permission not granted, request it
+                    requestStoragePermission()
+                }
                 return true
             }
             // Handle other menu items if needed
@@ -359,4 +369,79 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // Request storage permission
+    private fun requestStoragePermission() {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), WRITE_EXTERNAL_STORAGE_REQUEST)
+        } else {
+            // Permission already granted, call export function
+            exportDatabase("database.db")
+        }
+    }
+
+    // Check permission status
+    private fun checkStoragePermission(): Boolean {
+        return (ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
+    }
+
+    // Handle permission request result
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+            WRITE_EXTERNAL_STORAGE_REQUEST -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permission granted, call export function
+                    exportDatabase("database.db")
+                } else {
+                    // Permission denied, handle accordingly
+                    Toast.makeText(this,"Permission denied",Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    // Function to export Room database
+    private fun exportDatabase(dbName: String) {
+        val appDatabase = Room.databaseBuilder(this, DBInstance::class.java, dbName).build()
+
+        try {
+//            val exportDir = File(ContextCompat.getExternalFilesDirs(this, android.os.Environment.DIRECTORY_DOCUMENTS)[0], "DatabaseBackups")
+            val exportDir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "DatabaseBackups")
+
+            if (!exportDir.exists()) {
+                exportDir.mkdirs()
+            }
+//            val externalStorageState = Environment.getExternalStorageState()
+//            Log.d("ExportDatabase", "External Storage State: $externalStorageState")
+
+            val exportFile = File(exportDir, dbName)
+
+            exportFile.createNewFile()
+
+
+            val source = FileInputStream(getDatabasePath(dbName)).channel
+            val destination = FileOutputStream(exportFile).channel
+
+            destination.transferFrom(source, 0, source.size())
+
+            source.close()
+            destination.close()
+
+            Log.d("ExportDatabase", "Export Directory: ${exportDir.absolutePath}")
+            Log.d("ExportDatabase", "Existing Database Path: ${getDatabasePath(dbName).absolutePath}")
+
+            Toast.makeText(this,"export ${exportFile}",Toast.LENGTH_LONG).show()
+            // Notify the user that the export is successful
+            // You can show a Toast or display a notification
+        } catch (e: IOException) {
+            e.printStackTrace()
+            Log.e("ExportDatabase", "Error exporting database: ${e.message}")
+            // Handle the exception
+        }
+    }
 }
