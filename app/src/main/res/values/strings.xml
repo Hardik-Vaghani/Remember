@@ -107,5 +107,7 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="image_button_description">image button description</string>
+    <string name="action_export_word">Export Word</string>
+    <string name="action_import_word">Import Word</string>
 
 </resources>

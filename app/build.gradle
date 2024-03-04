@@ -80,4 +80,10 @@ dependencies {
     implementation 'com.intuit.ssp:ssp-android:1.1.0'
 
     implementation "com.airbnb.android:lottie:6.0.0"
+
+    // Gradle Groovy DSL
+//    implementation 'com.github.doyaaaaaken:kotlin-csv-jvm:1.9.3' // for JVM platform
+//    implementation 'com.github.doyaaaaaken:kotlin-csv-js:1.9.3' // for Kotlin JS platform
+    implementation 'org.apache.commons:commons-csv:1.5' // for Kotlin JS platform
+    implementation 'com.opencsv:opencsv:4.6' // Here is opencsv library
 }

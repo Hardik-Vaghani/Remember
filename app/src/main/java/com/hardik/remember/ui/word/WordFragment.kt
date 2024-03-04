@@ -7,6 +7,9 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AbsListView
@@ -16,6 +19,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,11 +46,34 @@ class WordFragment : Fragment() {
     lateinit var spellingAdapter: SpellingAdapter
 
 
+    /*override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        val itemSettings = menu.findItem(R.id.action_settings)
+        val itemExportWord = menu.findItem(R.id.action_export_word)
+
+        val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
+        return when (navHostFragment.navController.currentDestination?.id) {
+            R.id.nav_word -> {
+                itemExportWord.isVisible = true
+                itemSettings.isVisible = true
+            }
+            R.id.nav_blog -> {
+                itemExportWord.isVisible = false
+                itemSettings.isVisible = true
+            }
+            else -> {
+                itemSettings.isVisible = false
+                itemExportWord.isVisible = false
+            }
+        }
+    }*/
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         Log.d(TAG, "onCreateView: ")
         _binding = FragmentWordBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        setHasOptionsMenu(true)
         return root
     }
 

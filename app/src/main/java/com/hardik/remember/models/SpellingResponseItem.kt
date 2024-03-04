@@ -20,7 +20,7 @@ data class SpellingResponseItem(
     @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     @Expose
-    val id: Int = 0, // 1
+    val id: Long = 0, // 1
     @ColumnInfo(name = "word")
     @SerializedName("word")
     @Expose
