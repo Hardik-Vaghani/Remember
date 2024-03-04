@@ -31,16 +31,13 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.room.Room
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
@@ -56,17 +53,9 @@ import com.hardik.remember.ui.blog.BlogViewModel
 import com.hardik.remember.ui.blog.BlogViewModelProviderFactory
 import com.hardik.remember.ui.word.WordViewModel
 import com.hardik.remember.ui.word.WordViewModelProviderFactory
-import com.hardik.remember.util.CsvWriterUtil
 import com.opencsv.CSVReader
 import com.opencsv.CSVWriter
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import org.apache.commons.csv.CSVFormat
-import org.apache.commons.csv.CSVParser
 import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
-import java.io.FileReader
 import java.io.FileWriter
 import java.io.IOException
 import java.io.InputStream
@@ -75,7 +64,6 @@ import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Calendar
-import kotlin.math.log
 
 
 class MainActivity : AppCompatActivity() {
@@ -138,7 +126,7 @@ class MainActivity : AppCompatActivity() {
 //                    Snackbar.make(view, "your own action Gallery", Snackbar.LENGTH_LONG).setAction("Action", null).show()
                     navHostFragment.navController.navigate(R.id.blogInsertFragment)
                 }
-                R.id.nav_slideshow -> {
+                R.id.nav_syntax -> {
 //                    Snackbar.make(view, "your own action Slideshow", Snackbar.LENGTH_LONG).setAction("Action", null).show()
                 }
                 else -> {
@@ -153,7 +141,7 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_word, R.id.nav_blog, R.id.nav_slideshow
+                R.id.nav_word, R.id.nav_blog, R.id.nav_syntax
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -202,6 +190,7 @@ class MainActivity : AppCompatActivity() {
         val itemSettings = menu.findItem(R.id.action_settings)
         val itemExportWord = menu.findItem(R.id.action_export_word)
         val itemImportWord = menu.findItem(R.id.action_import_word)
+        val itemWebView = menu.findItem(R.id.webViewFullscreenFragment)
 
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
@@ -210,6 +199,7 @@ class MainActivity : AppCompatActivity() {
                 itemExportWord.isVisible = true
                 itemImportWord.isVisible = true
                 itemSettings.isVisible = true
+                itemWebView.isVisible = true
                 true
             }
             R.id.nav_blog -> {
@@ -222,6 +212,7 @@ class MainActivity : AppCompatActivity() {
                 itemSettings.isVisible = false
                 itemExportWord.isVisible = false
                 itemImportWord.isVisible = false
+                itemWebView.isVisible = false
                 true
             }
         }
@@ -256,6 +247,11 @@ class MainActivity : AppCompatActivity() {
                     requestForStoragePermissions()
                     Log.e("TAG", "onOptionsItemSelected: importDatabase Request", )
                 }
+                return true
+            }
+            R.id.webViewFullscreenFragment -> {
+                val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
+                navHostFragment.navController.navigate(R.id.webViewFullscreenFragment)
                 return true
             }
             // Handle other menu items if needed
@@ -589,9 +585,9 @@ class MainActivity : AppCompatActivity() {
     private fun exportDatabase() {
         try {
             val currentTime = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss"))
+                LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd hh:mm:ss"))
             } else {
-                (SimpleDateFormat("MM/dd/yyyy hh:mm:ss") as SimpleDateFormat).format(Calendar.getInstance().time)
+                (SimpleDateFormat("yyyy/MM/dd hh:mm:ss") as SimpleDateFormat).format(Calendar.getInstance().time)
             }
             val modifiedTimeFormat = currentTime.replace("/", "").replace(" ","_").replace(":", "")
             Log.i("TAG", "onOptionsItemSelected: $modifiedTimeFormat")
@@ -617,9 +613,10 @@ class MainActivity : AppCompatActivity() {
 //          val dataList: List<SpellingResponseItem> =
 
             // Write data
-            dataList.forEach { item ->
+            dataList.forEachIndexed { index, item ->
                 val row = arrayOf(
-                    item.id.toString(),
+//                    item.id.toString(),
+                    (index + 1).toString(),
                     item.word,
                     item.meaning,
                     item.pronounce,
@@ -652,3 +649,5 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+//https://drive.google.com/file/d/1qPw4KLvbzJ2RSBc6BgD6uFvCDXU0bciM/view?pli=1
+//https://drive.google.com/file/d/1qPw4KLvbzJ2RSBc6BgD6uFvCDXU0bciM/view?usp=sharing

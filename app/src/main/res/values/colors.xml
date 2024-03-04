@@ -34,6 +34,9 @@
     <color name="text_color_Secondary">@color/unlike_in_dark</color>
     <color name="text_color_PrimaryVariant">#fff</color>
     <color name="text_color_SecondaryVariant">#fff</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
 </resources><!---
 <color name="action_bar_night_color">#1D1D1D</color>
 <color name="action_bar_color">#1D1D1D</color>

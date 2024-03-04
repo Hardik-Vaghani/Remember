@@ -9,7 +9,7 @@
 
     <string name="menu_word">Words</string>
     <string name="menu_blog">Blogs</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_syntax">Syntax</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>
@@ -17,6 +17,10 @@
     <string name="app_widget_description">This is an app widget description</string>
 
     <string name="lorem_ipsum">This is <font color="red">red</font> and this <b><i>bold and italic (nested); </i>this just bold</b>,<u>underlined</u></string>
+
+    <string name="web_view_text">Click Open\n to download the \'database_db_spelling.csv\' file from Google Chrome. If Chrome is not open, copy the below link, go to Chrome, and manually search, then download the file \'database_db_spelling.csv\'. Open The Remember app, go to Word &gt; Menu &gt; Import &gt; \'database_db_spelling.csv\'</string>
+
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -109,5 +113,8 @@
     <string name="image_button_description">image button description</string>
     <string name="action_export_word">Export Word</string>
     <string name="action_import_word">Import Word</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="menu_web_view">Get File</string>
 
 </resources>

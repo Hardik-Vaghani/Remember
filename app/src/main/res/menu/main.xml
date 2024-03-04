@@ -16,4 +16,10 @@
         android:orderInCategory="100"
         android:title="@string/action_import_word"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/webViewFullscreenFragment"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="@string/menu_web_view" />
 </menu>

@@ -18,9 +18,9 @@
         tools:layout="@layout/fragment_blog" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_syntax"
         android:name="com.hardik.remember.ui.syntax.SyntaxFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_syntax"
         tools:layout="@layout/fragment_syntax" />
 
     <fragment
@@ -40,5 +40,11 @@
         android:name="com.hardik.remember.ui.blog.BlogUpdateFragment"
         android:label="Blog update"
         tools:layout="@layout/fragment_blog_insert"/>
+
+    <fragment
+        android:id="@+id/webViewFullscreenFragment"
+        android:name="com.hardik.remember.ui.web_view.WebViewFullscreenFragment"
+        android:label="Web View"
+        tools:layout="@layout/fragment_web_view_fullscreen" />
 </navigation>
 

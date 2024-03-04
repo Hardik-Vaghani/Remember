@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_4sdp"
+    android:background="@android:color/transparent"
+    tools:context=".ui.web_view.WebViewFullscreenFragment">
+
+    <TextView
+        android:id="@+id/tv_note"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/web_view_text"
+        android:textColor="@color/white"
+        android:textIsSelectable="true"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:id="@+id/tv_getFile_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textIsSelectable="true"
+        android:textSize="@dimen/_16sdp"
+        android:textStyle="bold"
+        android:layout_marginVertical="@dimen/_16sdp"
+        app:layout_constraintTop_toBottomOf="@id/tv_note"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mb_open_link"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/action_bar_color"
+        android:text="Open"
+        android:textColor="@color/selected_text_color"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_getFile_link"
+        app:layout_constraintVertical_bias="0.2"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Rounded" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
